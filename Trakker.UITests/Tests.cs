@@ -20,17 +20,12 @@ namespace Trakker.UITests
 		}
 
 		[Test]
-		public void ClickingButtonTwiceShouldChangeItsLabel ()
+		public void testAppRepl ()
 		{
-			Func<AppQuery, AppQuery> MyButton = c => c.Button ("myButton");
-
-			app.Tap (MyButton);
-			app.Tap (MyButton);
-			AppResult[] results = app.Query (MyButton);
-			app.Screenshot ("Button clicked twice.");
-
-			Assert.AreEqual ("2 clicks!", results [0].Text);
+			app.Repl ();
 		}
+
+
 	}
 }
 
