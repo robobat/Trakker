@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trakker.UITests", "Trakker.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.robobat.Model", "com.robobat.Model\com.robobat.Model.csproj", "{3D03ED98-EC1C-4039-9A36-A3A98A3B90B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.robobat.XMLParser", "com.robobat.XMLParser\com.robobat.XMLParser.csproj", "{6AC09AE1-E8EF-430E-AC8A-C43EC64D92BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,5 +27,9 @@ Global
 		{444A5CA3-B6F9-4556-83C9-43A61A7ED92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{444A5CA3-B6F9-4556-83C9-43A61A7ED92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{444A5CA3-B6F9-4556-83C9-43A61A7ED92D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AC09AE1-E8EF-430E-AC8A-C43EC64D92BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AC09AE1-E8EF-430E-AC8A-C43EC64D92BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AC09AE1-E8EF-430E-AC8A-C43EC64D92BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AC09AE1-E8EF-430E-AC8A-C43EC64D92BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

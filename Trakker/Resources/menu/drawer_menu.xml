@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_popular"
+            android:title="Popular Shows" />
+        <item
+            android:id="@+id/nav_friends"
+            android:title="Friends" />
+        <item
+            android:id="@+id/nav_discussion"
+            android:title="Discussion" />
+    </group>
+
+    <item android:title="Sub items">
+        <menu>
+            <item
+            android:id="@+id/mySubItem1"
+                android:title="Sub item 1" />
+            <item
+            android:id="@+id/mySubItem2"
+                android:title="Sub item 2" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="Shows">
+
+
+
+
+	</PreferenceCategory>
+
+
+
+
+	<Preference android:title="@string/version" android:summary="@string/copyright" />
+		<Preference android:title="@string/created_with" android:summary="@string/created_with_summary">
+			<intent android:action="android.intent.action.VIEW" android:data="http://www.xamarin.com" />
+			</Preference>
+	</PreferenceScreen>

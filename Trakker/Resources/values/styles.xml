@@ -16,12 +16,22 @@
         <!-- colorAccent is used as the default value for colorControlActivated
              which is used to tint widgets -->
         <item name="colorAccent">#e040fb</item>
-
   
       </style>
 
-      <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+    
     <item name="tabIndicatorColor">?attr/colorAccent</item>
-      <item name="tabBackground">?attr/colorPrimary</item>
+    <item name="tabIndicatorHeight">2dp</item>
+    <item name="tabPaddingStart">12dp</item>
+    <item name="tabPaddingEnd">12dp</item>
+    <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
+    <item name="tabSelectedTextColor">#FFFF00</item>
+	</style>
+
+	<style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+    <item name="android:textSize">18sp</item>
+    <item name="android:textColor">#FF0000</item>
+    <item name="textAllCaps">true</item>
 </style>
 </resources>

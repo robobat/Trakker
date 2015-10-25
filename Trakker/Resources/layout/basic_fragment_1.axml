@@ -3,22 +3,18 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
     <Button
-        android:id="@+id/myButton"
+        android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
+        android:id="@+id/button1" />
     <Button
-        android:text="Shows"
+        android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bGoToShows" />
-    <Button
-        android:text="Trakked Shows"
+        android:id="@+id/button2" />
+    <RatingBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bGoToTrackedShows" />
+        android:id="@+id/ratingBar1" />
 </LinearLayout>
