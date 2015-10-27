@@ -6,6 +6,8 @@ namespace com.robobat.Model
 	{
 		public string fullXML { get; set; }
 
+		public string fullJSON { get; set; }
+
 		public string TVDBID { get; set; }
 
 		public string Name { get; set; }
@@ -22,6 +24,13 @@ namespace com.robobat.Model
 
 		public Boolean isFavorite { get; set; }
 
+		public int numberOfSeasons { get; set; }
+
+		public int numberOfEpisodes { get; set; }
+
+		public string TMDBID { get; set; }
+
+		public string language { get; set; }
 
 		public TVShow ()
 		{

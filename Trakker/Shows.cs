@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Parse;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -23,6 +23,10 @@ using Android.Support.V4.App;
 using Java.Lang;
 using Android.Graphics.Drawables;
 using Android.Util;
+using System.Threading.Tasks;
+using System.Net.Http;
+using JSONParser;
+using com.robobat.ParseObjectsTrakker;
 
 namespace Trakker
 {
@@ -37,6 +41,8 @@ namespace Trakker
 		private Drawable oldBackground;
 		private ViewPager pager;
 		private TabLayout tabs;
+
+		//TVShow mShow;
 
 		public void OnPageScrollStateChanged (int state)
 		{
@@ -65,7 +71,7 @@ namespace Trakker
 
 		public void OnTabSelected (TabLayout.Tab p0)
 		{
-			Toast.MakeText (this, "Tab selected: " + p0, ToastLength.Short).Show ();
+			//Toast.MakeText (this, "Tab selected: " + p0, ToastLength.Short).Show ();
 //			mOnSwipeSendTab = (OnSwipeSendTab)this.Activity;
 //			mOnSwipeSendTab.sentTab (p0.Position);
 			changeTab (p0.Position);
@@ -108,7 +114,73 @@ namespace Trakker
 			}
 			setUpTabLayout ();
 
+
+//			var myTask = exampleTask ();
+//
+			//createExampleParseObject ();
+
+			var myTask2 = getParseObjectTask ();
+
 		}
+
+		void createExampleParseObject ()
+		{
+			var myCurrentShow = new TVShowForParse ();
+			myCurrentShow.Name = "Seifeld";
+			myCurrentShow.IMDBID = "tt0000001";
+
+			myCurrentShow.SaveAsync ();
+
+			var myCurrentShow2 = new TVShowForParse ();
+			myCurrentShow2.Name = "Breaking Bad";
+			myCurrentShow2.IMDBID = "tt0000002";
+
+			myCurrentShow2.SaveAsync ();
+
+			var myCurrentShow3 = new TVShowForParse ();
+			myCurrentShow3.Name = "Sopranos";
+			myCurrentShow3.IMDBID = "tt0000003";
+
+			myCurrentShow3.SaveAsync ();
+
+			var myTask2 = getParseObjectTask ();
+
+		}
+
+		public async Task getParseObjectTask ()
+		{
+			ParseObject gameScore = new ParseObject ("GameScore");
+			gameScore ["score"] = 1337;
+			gameScore ["playerName"] = "Sean Plott";
+			await gameScore.SaveAsync ();
+
+
+			var query = new ParseQuery<TVShowForParse> ()
+				.WhereEqualTo ("showName", "Breaking Bad");
+			IEnumerable<TVShowForParse> result = await query.FindAsync ();
+			List<TVShowForParse> list = result.ToList ();
+
+
+
+			Console.WriteLine ("my list size is " + list.Count + " and at 0 is " + list [0].Get<string> ("imdbID"));
+
+			//Console.WriteLine (testing);
+
+
+		}
+
+		public async Task exampleTask ()
+		{
+			var client = new HttpClient ();
+			var data = await client.GetStringAsync ("https://api.themoviedb.org/3/tv/1419?api_key=661b76973b90b91e0df214904015fd4d");
+
+			JSONParserForTMDB myParser = new JSONParserForTMDB (data);
+
+			//mShow = myParser.show;
+
+
+		}
+
 
 		void setUpTabLayout ()
 		{

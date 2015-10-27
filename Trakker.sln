@@ -9,12 +9,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.robobat.Model", "com.ro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.robobat.XMLParser", "com.robobat.XMLParser\com.robobat.XMLParser.csproj", "{6AC09AE1-E8EF-430E-AC8A-C43EC64D92BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.robobat.JSONParser", "JSONParser\com.robobat.JSONParser.csproj", "{7885B38C-4BE3-44C9-892C-A8D2643B410D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.robobat.ParseObjectsTrakker", "com.robobat.ParseObjectsTrakker\com.robobat.ParseObjectsTrakker.csproj", "{0359AB0B-FA76-4578-9C7C-CED7468726B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0359AB0B-FA76-4578-9C7C-CED7468726B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0359AB0B-FA76-4578-9C7C-CED7468726B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0359AB0B-FA76-4578-9C7C-CED7468726B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0359AB0B-FA76-4578-9C7C-CED7468726B5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{359ECC4E-10E0-4F92-8E83-5D243E7C775C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{359ECC4E-10E0-4F92-8E83-5D243E7C775C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{359ECC4E-10E0-4F92-8E83-5D243E7C775C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,5 +39,9 @@ Global
 		{6AC09AE1-E8EF-430E-AC8A-C43EC64D92BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AC09AE1-E8EF-430E-AC8A-C43EC64D92BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AC09AE1-E8EF-430E-AC8A-C43EC64D92BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7885B38C-4BE3-44C9-892C-A8D2643B410D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7885B38C-4BE3-44C9-892C-A8D2643B410D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7885B38C-4BE3-44C9-892C-A8D2643B410D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7885B38C-4BE3-44C9-892C-A8D2643B410D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

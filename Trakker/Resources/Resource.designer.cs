@@ -26,7 +26,10 @@ namespace Trakker
 		
 		public static void UpdateIdValues()
 		{
+			global::com.robobat.Model.Resource.String.library_name = global::Trakker.Resource.String.library_name;
+			global::com.robobat.ParseObjectsTrakker.Resource.String.library_name = global::Trakker.Resource.String.library_name;
 			global::com.robobat.XMLParser.Resource.String.library_name = global::Trakker.Resource.String.library_name;
+			global::JSONParser.Resource.String.library_name = global::Trakker.Resource.String.library_name;
 		}
 		
 		public partial class Animation
