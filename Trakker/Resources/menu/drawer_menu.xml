@@ -9,6 +9,7 @@
             android:id="@+id/nav_popular"
             android:title="Popular Shows" />
         <item
+       	android:icon="@drawable/ic_action_social_share"
             android:id="@+id/nav_friends"
             android:title="Friends" />
         <item

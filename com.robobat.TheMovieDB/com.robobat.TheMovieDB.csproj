@@ -4,15 +4,15 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{3D03ED98-EC1C-4039-9A36-A3A98A3B90B2}</ProjectGuid>
+    <ProjectGuid>{352379CB-11F7-461D-BDE7-E91835F2F100}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>com.robobat.Model</RootNamespace>
+    <RootNamespace>com.robobat.TheMovieDB</RootNamespace>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <AssemblyName>com.robobat.Model</AssemblyName>
+    <AssemblyName>com.robobat.TheMovieDB</AssemblyName>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -43,9 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="TVShow.cs" />
-    <Compile Include="Contact.cs" />
-    <Compile Include="MainPageViewModel.cs" />
+    <Compile Include="TVConstants.cs" />
+    <Compile Include="URLBuilder.cs" />
+    <Compile Include="IURLBuilder.cs" />
+    <Compile Include="DiscoverTVURLBuilder.cs" />
+    <Compile Include="URLManufacturer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

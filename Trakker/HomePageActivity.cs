@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
+using com.robobat.TheMovieDB;
 
 namespace Trakker
 {
@@ -29,6 +30,9 @@ namespace Trakker
 			SupportActionBar.SetHomeAsUpIndicator (Resource.Drawable.ic_menu);
 			SupportActionBar.SetDisplayHomeAsUpEnabled (true);
 			SupportActionBar.Title = "Trakker";
+
+			Console.WriteLine ("My enum for AirDateGTE is " + TVConstants.GetEnumDescription (com.robobat.TheMovieDB.TVConstants.DiscoverTV.AirDateGTE));
+
 			// Get our button from the layout resource,
 			// and attach an event to it
 			Button button = FindViewById<Button> (Resource.Id.myButton);
@@ -40,7 +44,14 @@ namespace Trakker
 			Button bGoToShows = FindViewById<Button> (Resource.Id.bGoToShows);
 
 			bGoToShows.Click += delegate {
-				var intent = new Intent (this, typeof(Shows));
+				var intent = new Intent (this, typeof(AddShowsTabActivity));
+				StartActivity (intent);
+			};
+
+			Button bGoToTrakkedShows = FindViewById<Button> (Resource.Id.bGoToTrackedShows);
+
+			bGoToTrakkedShows.Click += delegate {
+				var intent = new Intent (this, typeof(ShowDetailsTabActivity));
 				StartActivity (intent);
 			};
 		}

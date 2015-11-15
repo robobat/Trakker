@@ -16,8 +16,6 @@ using Android.Support.Design.Widget;
 using Fragment = Android.Support.V4.App.Fragment;
 using FragmentManager = Android.Support.V4.App.FragmentManager;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
-using Android.Support.V4.Widget;
-using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V4.App;
 using Java.Lang;
@@ -27,18 +25,19 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using JSONParser;
 using com.robobat.ParseObjectsTrakker;
+using Android.Accounts;
 
 namespace Trakker
 {
-	[Activity (Label = "Shows")]			
-	public class Shows : AppCompatActivity, ViewPager.IOnPageChangeListener, TabLayout.IOnTabSelectedListener
+	[Activity (Label = "Add Shows")]			
+	public class AddShowsTabActivity : AppCompatActivity, ViewPager.IOnPageChangeListener, TabLayout.IOnTabSelectedListener
 	{
 		Toolbar toolbar;
 		DrawerLayout drawerLayout;
 		private MyPagerAdapter adapter;
-		private int count = 1;
-		private int currentColor;
-		private Drawable oldBackground;
+		//		private int count = 1;
+		//		private int currentColor;
+		//		private Drawable oldBackground;
 		private ViewPager pager;
 		private TabLayout tabs;
 
@@ -96,12 +95,12 @@ namespace Trakker
 
 			// Create your application here
 
-			SetContentView (Resource.Layout.shows);
+			SetContentView (Resource.Layout.add_shows);
 
 			toolbar = FindViewById<Toolbar> (Resource.Id.toolbar);
 			//Toolbar will now take on default actionbar characteristics
 			SetSupportActionBar (toolbar);
-			SupportActionBar.Title = "Shows";
+			SupportActionBar.Title = "Add Shows";
 			SupportActionBar.SetHomeAsUpIndicator (Resource.Drawable.ic_menu);
 			SupportActionBar.SetDisplayHomeAsUpEnabled (true);
 
@@ -119,8 +118,29 @@ namespace Trakker
 //
 			//createExampleParseObject ();
 
-			var myTask2 = getParseObjectTask ();
+			//var myTask2 = getParseObjectTask ();
 
+
+			//DialogToShowAccountsOnDevice (); 
+
+
+		}
+
+		void DialogToShowAccountsOnDevice ()
+		{
+			AccountManager am = AccountManager.Get (this);
+			// "this" references the current Context
+			Account[] accounts = am.GetAccountsByType ("com.google");
+			Android.App.AlertDialog.Builder miaAlert = new Android.App.AlertDialog.Builder (this);
+			if (accounts != null && accounts.Length > 0) {
+				miaAlert.SetTitle ("i found an account name! and total # = " + accounts.Length);
+				miaAlert.SetMessage (accounts [0].Name);
+			} else {
+				miaAlert.SetTitle ("No Account Found");
+				miaAlert.SetMessage ("None");
+			}
+			Android.App.AlertDialog alert = miaAlert.Create ();
+			alert.Show ();
 		}
 
 		void createExampleParseObject ()
@@ -164,7 +184,16 @@ namespace Trakker
 
 			Console.WriteLine ("my list size is " + list.Count + " and at 0 is " + list [0].Get<string> ("imdbID"));
 
-			//Console.WriteLine (testing);
+			var user = new ParseUser () {
+				Username = "my name",
+				Password = "my pass",
+				Email = "email@example.com"
+			};
+
+			// other fields can be set just like with ParseObject
+			user ["phone"] = "415-392-0202";
+
+			await user.SignUpAsync ();
 
 
 		}
@@ -212,7 +241,7 @@ namespace Trakker
 
 		public override bool OnCreateOptionsMenu (IMenu menu)
 		{
-			//MenuInflater.Inflate (Resource.Menu.main, menu);
+			MenuInflater.Inflate (Resource.Menu.shows_menu, menu);
 			return base.OnCreateOptionsMenu (menu);
 		}
 
@@ -236,7 +265,7 @@ namespace Trakker
 	public class MyPagerAdapter : FragmentPagerAdapter
 	{
 		private readonly string[] Titles = {
-			"Popular", "Action", "Sci-Fi"
+			"Popular", "Action", "Sci-Fi", "Drama", "Mystery", "Comedy", "Animation", "Sports"
 		};
 
 		public MyPagerAdapter (FragmentManager fm) : base (fm)
@@ -262,11 +291,11 @@ namespace Trakker
 		public override Fragment GetItem (int position)
 		{
 			//This determines what fragment is called based on Tab Position
-			if (position == 1) {
-				return GridViewFragment.NewInstance (position);
-			}
+			//if (position == 1 || position == 3) {
+			return AddShowsFragment.NewInstance (position, Titles [position]);
+			//}
 
-			return BasicFragment.NewInstance (position);
+			//return BasicFragment.NewInstance (position);
 
 		}
 

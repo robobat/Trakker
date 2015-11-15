@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+  	  android:visible="true"
+  	  android:icon="@drawable/ic_action_social_share"
+      android:id="@+id/menu_settings"
+      android:showAsAction="always"
+      android:title="Settings234" />
+      <item
+      android:id="@+id/menu_more_settings"
+      android:showAsAction="never"
+      android:title="More Settings" />
+      <item
+      android:id="@+id/menu_other_settings"
+      android:showAsAction="never"
+      android:title="Other Settings" />
+</menu>
+

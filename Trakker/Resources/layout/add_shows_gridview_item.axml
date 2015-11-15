@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp">
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="66dp"
+        android:layout_height="100dp"
+        android:id="@+id/showThumbNail" />
+    <TextView
+        android:text="This is a test"
+        android:id="@+id/myTitleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/showThumbNail" />
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/trakkedButton"
+        android:src="@android:drawable/btn_star_big_off"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>

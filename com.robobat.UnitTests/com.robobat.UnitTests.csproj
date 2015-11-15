@@ -4,16 +4,18 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{3D03ED98-EC1C-4039-9A36-A3A98A3B90B2}</ProjectGuid>
+    <ProjectGuid>{73FE7E58-0700-41B8-BADD-2737C3DB7D68}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>com.robobat.Model</RootNamespace>
+    <RootNamespace>com.robobat.UnitTests</RootNamespace>
+    <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <AssemblyName>com.robobat.Model</AssemblyName>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <AssemblyName>com.robobat.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,18 +42,46 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
+    <Reference Include="Xamarin.Android.NUnitLite" />
+    <Reference Include="MockJockey">
+      <HintPath>..\packages\MockJockey.1.0.1\lib\MockJockey.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="TestsSample.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="TVShow.cs" />
-    <Compile Include="Contact.cs" />
-    <Compile Include="MainPageViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowUnitTests.cs" />
+    <Compile Include="TheMovieDBTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="License.rtf" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Trakker\Trakker.csproj">
+      <Project>{444A5CA3-B6F9-4556-83C9-43A61A7ED92D}</Project>
+      <Name>Trakker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\com.robobat.Model\com.robobat.Model.csproj">
+      <Project>{3D03ED98-EC1C-4039-9A36-A3A98A3B90B2}</Project>
+      <Name>com.robobat.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\com.robobat.TheMovieDB\com.robobat.TheMovieDB.csproj">
+      <Project>{352379CB-11F7-461D-BDE7-E91835F2F100}</Project>
+      <Name>com.robobat.TheMovieDB</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
