@@ -71,10 +71,10 @@
     <Compile Include="BasicFragment.cs" />
     <Compile Include="HomePageActivity.cs" />
     <Compile Include="App.cs" />
-    <Compile Include="ShowDetailsTabActivity.cs" />
     <Compile Include="AddShow\AddShowsAdapter.cs" />
     <Compile Include="AddShow\AddShowsFragment.cs" />
     <Compile Include="AddShow\AddShowsTabActivity.cs" />
+    <Compile Include="ShowDetailsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

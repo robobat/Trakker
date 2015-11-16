@@ -213,6 +213,16 @@ namespace Trakker
 
 		void setUpTabLayout ()
 		{
+			//TODO
+			//Here's where we would check the genres the user would like to view and 
+			//List them here for him using shared preferences or Parse data
+
+//			List<Fragment> mList = new List<Fragment> ();
+//			mList.Add (new AddShowsFragment (this, 1, "Popular"));
+//			mList.Add (new AddShowsFragment (this, 2, "Action"));
+//			mList.Add (new AddShowsFragment (this, 3, "Sci-Fi"));
+//			mList.Add (new AddShowsFragment (this, 4, "Drama"));
+//			mList.Add (new AddShowsFragment (this, 5, "Mystery"));
 			adapter = new MyPagerAdapter (this.SupportFragmentManager);
 			pager = FindViewById<ViewPager> (Resource.Id.pager);
 			tabs = FindViewById<TabLayout> (Resource.Id.tabs);
@@ -265,12 +275,18 @@ namespace Trakker
 	public class MyPagerAdapter : FragmentPagerAdapter
 	{
 		private readonly string[] Titles = {
-			"Popular", "Action", "Sci-Fi", "Drama", "Mystery", "Comedy", "Animation", "Sports"
+			"Popular", "Comedy", "Action", "Drama", "Animation", "Mystery", "SciFi"
 		};
+
+		public List<Fragment> fragList;
 
 		public MyPagerAdapter (FragmentManager fm) : base (fm)
 		{
-			
+//			fragList = new List<Fragment> ();
+//			foreach (Fragment frag in myList) {
+//				fragList.Add (frag);
+//			}
+
 		}
 
 		public override ICharSequence GetPageTitleFormatted (int position)
@@ -292,10 +308,7 @@ namespace Trakker
 		{
 			//This determines what fragment is called based on Tab Position
 			//if (position == 1 || position == 3) {
-			return AddShowsFragment.NewInstance (position, Titles [position]);
-			//}
-
-			//return BasicFragment.NewInstance (position);
+			return AddShowsFragment.NewInstance (position, Titles [position]);	
 
 		}
 

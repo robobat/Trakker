@@ -19,6 +19,7 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
+using System.Collections;
 
 namespace Trakker
 {
@@ -32,22 +33,51 @@ namespace Trakker
 		//		private readonly string[] Titles = {
 		//			"Popular", "Action", "Sci-Fi", "Drama", "Mystery", "Comedy", "Animation", "Sports"
 		//		};
+		Activity mActivity;
 		private int position;
 		private string title;
 		AddShowsAdapter mAdapter;
 		GridView mGridView;
 
+		//		public static AddShowsFragment NewInstance (int position, string title)
+		//		{
+		//
+		//			var f = new AddShowsFragment (this.Activity, position, title);
+		//			var b = new Bundle ();
+		//			b.PutInt ("position", position);
+		//			b.PutString ("title", title);
+		//			f.Arguments = b;
+		//			return f;
+		//
+		//		}
+
+		public string getTitle ()
+		{
+			return title;
+		}
+
 		public static AddShowsFragment NewInstance (int position, string title)
 		{
-			
 			var f = new AddShowsFragment ();
 			var b = new Bundle ();
 			b.PutInt ("position", position);
 			b.PutString ("title", title);
 			f.Arguments = b;
 			return f;
-
 		}
+
+		//		public AddShowsFragment ()
+		//		{
+		//			Console.WriteLine ("I called default constructor");
+		//		}
+		//
+		//		public AddShowsFragment (Activity a, int pos, string tit)
+		//		{
+		//			mActivity = a;
+		//			position = pos;
+		//			title = tit;
+		//		}
+
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
@@ -57,6 +87,9 @@ namespace Trakker
 
 			position = Arguments.GetInt ("position");
 			title = Arguments.GetString ("title");
+
+//			position = Arguments.GetInt ("position");
+//			title = Arguments.GetString ("title");
 		}
 
 		public override View OnCreateView (LayoutInflater inflater, 
@@ -69,17 +102,66 @@ namespace Trakker
 			mGridView = root.FindViewById<GridView> (Resource.Id.myGridview);
 			setUpAdapter ();
 
+			string buttonText = "I am in position " + position + " with title " + title;
+
+			if (savedInstanceState != null) {
+				var myNewList = savedInstanceState.GetStringArray ("TrakkedList");
+				if (myNewList != null) {
+					//mAdapter.setTrakkedShows ((List<string>)savedInstanceState.GetStringArrayList ("TrakkedList"));
+					buttonText += "" + myNewList.Length;
+				}
+			}
+
 			Button b = root.FindViewById<Button> (Resource.Id.bRandomButton);
-			b.Text = "I am in position " + position + " with title " + title;
+			b.Text = buttonText;
 
 
 			mGridView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => {
-				Toast.MakeText (this.Activity, "I clicked on position " + e.Position + " with TVDBID of "
-				+ showsJToken [e.Position] ["id"], ToastLength.Short).Show ();
+				var intent = new Intent (this.Activity, typeof(ShowDetailsActivity));
+				intent.PutExtra ("TVDBID", "" + showsJToken [e.Position] ["id"]);
+				StartActivity (intent);
+
+
+//				Toast.MakeText (this.Activity, "I clicked on position " + e.Position + " with TVDBID of "
+//				+ showsJToken [e.Position] ["id"], ToastLength.Short).Show ();
 			};
 
 			return root;
 		}
+
+		public override void OnPause ()
+		{
+			base.OnPause ();
+		}
+
+		public override void OnResume ()
+		{
+			base.OnResume ();
+			//TODO
+			//Need to notify adapter to update all values
+
+
+		}
+
+		public override void OnSaveInstanceState (Bundle outState)
+		{
+			List<string> myList = mAdapter.getTrakkedShows ();
+
+			if (myList.Count != 0) {
+
+				string[] myArray = new string[myList.Count];
+				for (int i = 0; i < myList.Count; i++) {
+					myArray [i] = myList [i];
+
+				}
+
+				outState.PutStringArray ("TrakkedList", myArray);
+			}
+
+			Console.WriteLine ("##$$###$$### I Saved my bundle with size " + myList.Count);
+
+		}
+
 
 		void setUpAdapter ()
 		{

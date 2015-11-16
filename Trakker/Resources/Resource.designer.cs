@@ -1944,14 +1944,14 @@ namespace Trakker
 			// aapt resource value: 0x7f0b0079
 			public const int media_actions = 2131427449;
 			
-			// aapt resource value: 0x7f0b008a
-			public const int menu_more_settings = 2131427466;
-			
 			// aapt resource value: 0x7f0b008b
-			public const int menu_other_settings = 2131427467;
+			public const int menu_more_settings = 2131427467;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int menu_settings = 2131427465;
+			// aapt resource value: 0x7f0b008c
+			public const int menu_other_settings = 2131427468;
+			
+			// aapt resource value: 0x7f0b008a
+			public const int menu_settings = 2131427466;
 			
 			// aapt resource value: 0x7f0b001b
 			public const int middle = 2131427355;
@@ -1968,26 +1968,26 @@ namespace Trakker
 			// aapt resource value: 0x7f0b0065
 			public const int myGridview = 2131427429;
 			
-			// aapt resource value: 0x7f0b0087
-			public const int mySubItem1 = 2131427463;
-			
 			// aapt resource value: 0x7f0b0088
-			public const int mySubItem2 = 2131427464;
+			public const int mySubItem1 = 2131427464;
+			
+			// aapt resource value: 0x7f0b0089
+			public const int mySubItem2 = 2131427465;
 			
 			// aapt resource value: 0x7f0b006c
 			public const int myTitleName = 2131427436;
 			
+			// aapt resource value: 0x7f0b0087
+			public const int nav_discussion = 2131427463;
+			
 			// aapt resource value: 0x7f0b0086
-			public const int nav_discussion = 2131427462;
-			
-			// aapt resource value: 0x7f0b0085
-			public const int nav_friends = 2131427461;
-			
-			// aapt resource value: 0x7f0b0083
-			public const int nav_home = 2131427459;
+			public const int nav_friends = 2131427462;
 			
 			// aapt resource value: 0x7f0b0084
-			public const int nav_popular = 2131427460;
+			public const int nav_home = 2131427460;
+			
+			// aapt resource value: 0x7f0b0085
+			public const int nav_popular = 2131427461;
 			
 			// aapt resource value: 0x7f0b006a
 			public const int nav_view = 2131427434;
@@ -2150,6 +2150,9 @@ namespace Trakker
 			
 			// aapt resource value: 0x7f0b006d
 			public const int trakkedButton = 2131427437;
+			
+			// aapt resource value: 0x7f0b0083
+			public const int tvForID = 2131427459;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int up = 2131427336;

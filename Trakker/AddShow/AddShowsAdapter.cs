@@ -4,6 +4,7 @@ using Android.Views;
 using Android.App;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using System.Collections;
 
 namespace Trakker
 {
@@ -14,6 +15,8 @@ namespace Trakker
 		List<string> myTitles = new List<string> ();
 
 		List<JToken> myShows = new List<JToken> ();
+
+		List<string> mTrakkedShows = new  List<string> ();
 
 		public AddShowsAdapter (Activity a)
 		{
@@ -27,6 +30,16 @@ namespace Trakker
 			myShows.Add (showJSON);
 
 
+		}
+
+		public List<string> getTrakkedShows ()
+		{
+			return mTrakkedShows;
+		}
+
+		public void setTrakkedShows (List<string> list)
+		{
+			mTrakkedShows = list;
 		}
 
 		public void AddShows (List<JToken> showJSON)
@@ -90,7 +103,11 @@ namespace Trakker
 				holder.ivShowIsTrakked = gridView.FindViewById<ImageView> (Resource.Id.trakkedButton);
 
 				holder.ivShowIsTrakked.Click += (object sender, EventArgs e) => {
-					Toast.MakeText (activity, "Star was clicked", ToastLength.Short).Show ();
+					
+					holder.ivShowIsTrakked.SetImageResource (Android.Resource.Drawable.ButtonStarBigOn);
+					mTrakkedShows.Add ("" + myShows [position] ["id"]);
+
+					Toast.MakeText (activity, "Star was clicked with id " + myShows [position] ["id"] + " and size is " + mTrakkedShows.Count, ToastLength.Short).Show ();
 				};
 
 				gridView.Tag = holder;
@@ -98,11 +115,11 @@ namespace Trakker
 				holder = gridView.Tag as ViewHolder;
 			}
 
-			holder.tvShowTitle.Text = "" + myShows [position % myShows.Count] ["name"] +
-			" With ID = " + myShows [position % myShows.Count] ["id"];
+			holder.tvShowTitle.Text = "" + myShows [position] ["name"] +
+			" With ID = " + myShows [position] ["id"];
 
 			Koush.UrlImageViewHelper.SetUrlDrawable (holder.ivShowThumbNail, 
-				"http://image.tmdb.org/t/p/w92" + myShows [position % myShows.Count] ["poster_path"]);
+				"http://image.tmdb.org/t/p/w92" + myShows [position] ["poster_path"]);
 
 
 

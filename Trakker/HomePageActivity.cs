@@ -50,10 +50,10 @@ namespace Trakker
 
 			Button bGoToTrakkedShows = FindViewById<Button> (Resource.Id.bGoToTrackedShows);
 
-			bGoToTrakkedShows.Click += delegate {
-				var intent = new Intent (this, typeof(ShowDetailsTabActivity));
-				StartActivity (intent);
-			};
+//			bGoToTrakkedShows.Click += delegate {
+//				var intent = new Intent (this, typeof(ShowDetailsActivity));
+//				StartActivity (intent);
+//			};
 		}
 	}
 }
