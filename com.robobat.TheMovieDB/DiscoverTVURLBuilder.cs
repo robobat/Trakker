@@ -14,43 +14,43 @@ namespace com.robobat.TheMovieDB
 			page = pageNum;
 		}
 
-		public void SetSortBy (com.robobat.TheMovieDB.TVConstants.DiscoverTV passedValue)
+		public void SetSortBy (com.robobat.TheMovieDB.TMDBConstants.DiscoverTV passedValue)
 		{
-			builtURL += TVConstants.PARAMATERSEPARATOR + TVConstants.SORTBY +
-			TVConstants.PARAMETEREQUAL + TVConstants.GetEnumDescription (passedValue);
+			builtURL += TMDBConstants.PARAMATERSEPARATOR + TMDBConstants.SORTBY +
+			TMDBConstants.PARAMETEREQUAL + TMDBConstants.GetEnumDescription (passedValue);
 		}
 
 		#region IURLBuilderMethods
 
 		public void BuildStartOfURL ()
 		{
-			builtURL += TVConstants.TMDBURLSTART;
+			builtURL += TMDBConstants.TMDBURLSTART;
 		}
 
 		public void AddSpecificSearch ()
 		{
 			//Specific to DiscoverTV
-			builtURL += TVConstants.DISCOVERTV;
+			builtURL += TMDBConstants.DISCOVERTV;
 		}
 
 		public void AddParameterStartAndAPIKey ()
 		{
-			builtURL += TVConstants.PARAMATERSTART + TVConstants.TMDBAPIKEY;
+			builtURL += TMDBConstants.PARAMATERSTART + TMDBConstants.TMDBAPIKEY;
 		}
 
 		public void AddPageNum ()
 		{
-			builtURL += TVConstants.PARAMATERSEPARATOR + TVConstants.GetEnumDescription (TVConstants.DiscoverTV.Page) +
-			TVConstants.PARAMETEREQUAL + page;
+			builtURL += TMDBConstants.PARAMATERSEPARATOR + TMDBConstants.GetEnumDescription (TMDBConstants.DiscoverTV.Page) +
+			TMDBConstants.PARAMETEREQUAL + page;
 		}
 
 		public void AddDesiredParameters (string[] myArray)
 		{
 			if (myArray.Length == 2) {
-				builtURL += TVConstants.PARAMATERSEPARATOR + myArray [0] +
-				TVConstants.PARAMETEREQUAL + myArray [1];
+				builtURL += TMDBConstants.PARAMATERSEPARATOR + myArray [0] +
+				TMDBConstants.PARAMETEREQUAL + myArray [1];
 			} else if (myArray.Length > 2) {
-				builtURL += TVConstants.PARAMATERSEPARATOR + myArray [0] + TVConstants.PARAMETEREQUAL;
+				builtURL += TMDBConstants.PARAMATERSEPARATOR + myArray [0] + TMDBConstants.PARAMETEREQUAL;
 				int parametersToAdd = myArray.Length - 2;
 
 				builtURL += myArray [2];

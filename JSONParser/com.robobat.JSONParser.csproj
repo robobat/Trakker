@@ -54,7 +54,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\com.robobat.Model\com.robobat.Model.csproj">
       <Project>{3D03ED98-EC1C-4039-9A36-A3A98A3B90B2}</Project>
@@ -67,4 +66,5 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -26,6 +26,7 @@ using System.Net.Http;
 using JSONParser;
 using com.robobat.ParseObjectsTrakker;
 using Android.Accounts;
+using Newtonsoft.Json.Linq;
 
 namespace Trakker
 {
@@ -39,11 +40,13 @@ namespace Trakker
 		private Drawable oldBackground;
 		private ViewPager pager;
 		private TabLayout tabs;
+		TextView myTextView;
 
 		public AddShowsFragment mAddShows1, mAddShows2, mAddShows3;
 
 
-
+		public string name;
+		public string network;
 
 
 
@@ -70,13 +73,32 @@ namespace Trakker
 				setupDrawerContent (navigationView);
 			}
 		
-			TextView myTextView = FindViewById<TextView> (Resource.Id.tvForID);
-			myTextView.Text = Intent.GetStringExtra ("TVDBID");
+			myTextView = FindViewById<TextView> (Resource.Id.tvForID);
+			//myTextView.Text = Intent.GetStringExtra ("TVDBID");
 
+			var myDownloadTask = downloadURL ();
 
 		}
 
+		public async Task downloadURL ()
+		{
+			string myURL = "https://api.themoviedb.org/3/tv/" + Intent.GetStringExtra ("TVDBID")  +"?api_key=661b76973b90b91e0df214904015fd4d";
 
+			var client = new HttpClient ();
+			var data = await client.GetStringAsync (myURL);
+			JObject o = JObject.Parse (data);
+			name = o ["name"] + "";
+			network = o ["networks"] [0]["name"]+"";
+			setTextvieww();
+//				
+
+		}
+
+		void setTextvieww ()
+		{
+			string mySHow = "Show title is " + name + " on network " +network;
+			myTextView.Text = mySHow;
+		}
 
 		void setupDrawerContent (NavigationView navigationView)
 		{

@@ -32,6 +32,10 @@ namespace Trakker
 
 		}
 
+		public int sizeOfMyShows(){
+			return myShows.Count;
+		}
+
 		public List<string> getTrakkedShows ()
 		{
 			return mTrakkedShows;

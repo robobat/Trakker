@@ -21,4 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bGoToTrackedShows" />
+    <Button
+        android:text="Create A Parse User"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bCreateParseUser" />
 </LinearLayout>

@@ -108,8 +108,13 @@
     <AndroidResource Include="Resources\layout\add_shows_gridview_item.axml" />
     <AndroidResource Include="Resources\layout\add_show_gridview_layout.axml" />
     <AndroidResource Include="Resources\layout-land\add_show_gridview_layout.axml" />
+    <AndroidResource Include="Resources\anim\app_1_slide_in.xml" />
+    <AndroidResource Include="Resources\anim\app_1_slide_out.xml" />
+    <AndroidResource Include="Resources\anim\app_2_slide_in.xml" />
+    <AndroidResource Include="Resources\anim\app_2_slide_out.xml" />
+    <AndroidResource Include="Resources\anim\fade_in.xml" />
+    <AndroidResource Include="Resources\anim\fade_out.xml" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <XamarinComponentReference Include="json.net">
       <Version>4.5.11.1</Version>
@@ -142,6 +147,7 @@
     <Folder Include="Resources\xml\" />
     <Folder Include="Resources\drawable\" />
     <Folder Include="AddShow\" />
+    <Folder Include="Resources\anim\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\com.robobat.XMLParser\com.robobat.XMLParser.csproj">
@@ -165,4 +171,5 @@
       <Name>com.robobat.TheMovieDB</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -102,7 +102,7 @@ namespace Trakker
 			mGridView = root.FindViewById<GridView> (Resource.Id.myGridview);
 			setUpAdapter ();
 
-			string buttonText = "I am in position " + position + " with title " + title;
+			string buttonText = "I am in position " + position + " with title " + title + " And value " + getGenreValue (title);
 
 			if (savedInstanceState != null) {
 				var myNewList = savedInstanceState.GetStringArray ("TrakkedList");
@@ -114,6 +114,11 @@ namespace Trakker
 
 			Button b = root.FindViewById<Button> (Resource.Id.bRandomButton);
 			b.Text = buttonText;
+			b.Click += delegate(object sender, EventArgs e) {
+				//mAdapter.NotifyDataSetChanged();
+				//Toast.MakeText (this.Activity, "Length of adapter array is "+mAdapter.sizeOfMyShows(), ToastLength.Short).Show ();
+				setUpAdapter();
+			};
 
 
 			mGridView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => {
@@ -174,7 +179,7 @@ namespace Trakker
 		void getNextPage ()
 		{
 			PAGENUM++;
-			if (PAGENUM < 7) {
+			if (PAGENUM < 4) {
 				var myTask = populateArrayOfShows ();
 			}
 		}
@@ -189,18 +194,18 @@ namespace Trakker
 			mewManufacturer.Construct (urlBuilder);
 
 			string[] sortByParam = {
-				TVConstants.SORTBY,
-				TVConstants.GetEnumDescription (TVConstants.DiscoverTV.VoteAverageDesc)
+				TMDBConstants.SORTBY,
+				TMDBConstants.GetEnumDescription (TMDBConstants.DiscoverTV.VoteAverageDesc)
 			};
 			urlBuilder.AddDesiredParameters (sortByParam);
 			string[] voteCountGTE = {
-				TVConstants.GetEnumDescription (TVConstants.DiscoverTV.VoteCountGTE), 
+				TMDBConstants.GetEnumDescription (TMDBConstants.DiscoverTV.VoteCountGTE), 
 				10.ToString ()
 			};
 			urlBuilder.AddDesiredParameters (voteCountGTE);
 			if (!title.Equals ("Popular")) {
 				string[] genres = {
-					TVConstants.GetEnumDescription (TVConstants.DiscoverTV.WithGenres), 
+					TMDBConstants.GetEnumDescription (TMDBConstants.DiscoverTV.WithGenres), 
 					"" + getGenreValue (title)
 				};
 				urlBuilder.AddDesiredParameters (genres);
@@ -229,25 +234,25 @@ namespace Trakker
 			switch (title) {
 
 			case "Action":
-				return (int)com.robobat.TheMovieDB.TVConstants.Genres.Action;
+				return (int)com.robobat.TheMovieDB.TMDBConstants.Genres.Action;
 			
-			case "Sci-Fi":
-				return (int)com.robobat.TheMovieDB.TVConstants.Genres.SciFi;
+			case "SciFi":
+				return (int)com.robobat.TheMovieDB.TMDBConstants.Genres.SciFi;
 
 			case "Drama":
-				return (int)com.robobat.TheMovieDB.TVConstants.Genres.Drama;
+				return (int)com.robobat.TheMovieDB.TMDBConstants.Genres.Drama;
 
 			case "Mystery":
-				return (int)com.robobat.TheMovieDB.TVConstants.Genres.Mystery;
+				return (int)com.robobat.TheMovieDB.TMDBConstants.Genres.Mystery;
 
 			case "Comedy":
-				return (int)com.robobat.TheMovieDB.TVConstants.Genres.Comedy;
+				return (int)com.robobat.TheMovieDB.TMDBConstants.Genres.Comedy;
 
 			case "Animation":
-				return (int)com.robobat.TheMovieDB.TVConstants.Genres.Animation;
+				return (int)com.robobat.TheMovieDB.TMDBConstants.Genres.Animation;
 
 			default:
-				return (int)com.robobat.TheMovieDB.TVConstants.Genres.Soap;
+				return (int)com.robobat.TheMovieDB.TMDBConstants.Genres.Soap;
 
 			}
 		}

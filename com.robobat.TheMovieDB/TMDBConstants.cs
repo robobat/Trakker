@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace com.robobat.TheMovieDB
 {
-	public class TVConstants
+	public class TMDBConstants
 	{
 		public const string TMDBURLSTART = "https://api.themoviedb.org/3";
 

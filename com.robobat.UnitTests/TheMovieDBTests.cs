@@ -33,7 +33,7 @@ namespace com.robobat.UnitTests
 
 			newManufacturer.Construct (urlBuilder);
 
-			Assert.AreEqual ("https://api.themoviedb.org/3/discover/tv?" + TVConstants.TMDBAPIKEY + "&page=1", 
+			Assert.AreEqual ("https://api.themoviedb.org/3/discover/tv?" + TMDBConstants.TMDBAPIKEY + "&page=1", 
 				urlBuilder.BuiltURL);
 		}
 
@@ -46,17 +46,17 @@ namespace com.robobat.UnitTests
 			newManufacturer.Construct (urlBuilder);
 
 			string[] myGenres = {
-				TVConstants.GetEnumDescription (TVConstants.DiscoverTV.WithGenres), 
-				TVConstants.ORSEPARATOR, 
-				"" + (int)TVConstants.Genres.Drama, 
-				"" + (int)TVConstants.Genres.Action, 
-				"" + (int)TVConstants.Genres.SciFi
+				TMDBConstants.GetEnumDescription (TMDBConstants.DiscoverTV.WithGenres), 
+				TMDBConstants.ORSEPARATOR, 
+				"" + (int)TMDBConstants.Genres.Drama, 
+				"" + (int)TMDBConstants.Genres.Action, 
+				"" + (int)TMDBConstants.Genres.SciFi
 			};
 			urlBuilder.AddDesiredParameters (myGenres);
 
 			Assert.AreEqual ("https://api.themoviedb.org/3/discover/tv?" +
-			TVConstants.TMDBAPIKEY + "&page=1&with_genres=" + (int)TVConstants.Genres.Drama
-			+ "|" + (int)TVConstants.Genres.Action + "|" + (int)TVConstants.Genres.SciFi, 
+			TMDBConstants.TMDBAPIKEY + "&page=1&with_genres=" + (int)TMDBConstants.Genres.Drama
+			+ "|" + (int)TMDBConstants.Genres.Action + "|" + (int)TMDBConstants.Genres.SciFi, 
 				urlBuilder.BuiltURL);
 
 
@@ -70,24 +70,24 @@ namespace com.robobat.UnitTests
 
 			newManufacturer.Construct (urlBuilder);
 			string[] myGenres = {
-				TVConstants.GetEnumDescription (TVConstants.DiscoverTV.WithGenres), 
-				TVConstants.ORSEPARATOR, 
-				"" + (int)TVConstants.Genres.Drama, 
-				"" + (int)TVConstants.Genres.Action, 
-				"" + (int)TVConstants.Genres.SciFi
+				TMDBConstants.GetEnumDescription (TMDBConstants.DiscoverTV.WithGenres), 
+				TMDBConstants.ORSEPARATOR, 
+				"" + (int)TMDBConstants.Genres.Drama, 
+				"" + (int)TMDBConstants.Genres.Action, 
+				"" + (int)TMDBConstants.Genres.SciFi
 			};
 			urlBuilder.AddDesiredParameters (myGenres);
 
 			string[] sortByParam = {
-				TVConstants.SORTBY,
-				TVConstants.GetEnumDescription (TVConstants.DiscoverTV.PopularityDesc)
+				TMDBConstants.SORTBY,
+				TMDBConstants.GetEnumDescription (TMDBConstants.DiscoverTV.PopularityDesc)
 			};
 			urlBuilder.AddDesiredParameters (sortByParam);
 
 			Assert.AreEqual ("https://api.themoviedb.org/3/discover/tv?" +
-			TVConstants.TMDBAPIKEY + "&page=3&with_genres=" + (int)TVConstants.Genres.Drama
-			+ "|" + (int)TVConstants.Genres.Action + "|" + (int)TVConstants.Genres.SciFi +
-			"&sort_by=" + TVConstants.GetEnumDescription (TVConstants.DiscoverTV.PopularityDesc), 
+			TMDBConstants.TMDBAPIKEY + "&page=3&with_genres=" + (int)TMDBConstants.Genres.Drama
+			+ "|" + (int)TMDBConstants.Genres.Action + "|" + (int)TMDBConstants.Genres.SciFi +
+			"&sort_by=" + TMDBConstants.GetEnumDescription (TMDBConstants.DiscoverTV.PopularityDesc), 
 				urlBuilder.BuiltURL);
 
 		}

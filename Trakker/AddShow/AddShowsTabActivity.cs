@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -100,7 +99,26 @@ namespace Trakker
 			toolbar = FindViewById<Toolbar> (Resource.Id.toolbar);
 			//Toolbar will now take on default actionbar characteristics
 			SetSupportActionBar (toolbar);
-			SupportActionBar.Title = "Add Shows";
+			string title;
+
+			if (ParseUser.CurrentUser != null) {
+				string myUsername;
+				ParseUser myUser = ParseUser.CurrentUser;
+				if(ParseUser.CurrentUser.Username != null)
+				 myUsername = ParseUser.CurrentUser.Username;
+
+
+				title = ParseUser.CurrentUser.Username;
+
+
+
+
+			} else {
+				title = "Add Shows, No User";
+			}
+
+
+			SupportActionBar.Title = title;
 			SupportActionBar.SetHomeAsUpIndicator (Resource.Drawable.ic_menu);
 			SupportActionBar.SetDisplayHomeAsUpEnabled (true);
 
@@ -217,13 +235,13 @@ namespace Trakker
 			//Here's where we would check the genres the user would like to view and 
 			//List them here for him using shared preferences or Parse data
 
-//			List<Fragment> mList = new List<Fragment> ();
-//			mList.Add (new AddShowsFragment (this, 1, "Popular"));
-//			mList.Add (new AddShowsFragment (this, 2, "Action"));
-//			mList.Add (new AddShowsFragment (this, 3, "Sci-Fi"));
-//			mList.Add (new AddShowsFragment (this, 4, "Drama"));
-//			mList.Add (new AddShowsFragment (this, 5, "Mystery"));
-			adapter = new MyPagerAdapter (this.SupportFragmentManager);
+
+			string[] testing = {
+				"Popular", "Comedy", "Action", "Drama"
+			};
+
+
+			adapter = new MyPagerAdapter (this.SupportFragmentManager, testing);
 			pager = FindViewById<ViewPager> (Resource.Id.pager);
 			tabs = FindViewById<TabLayout> (Resource.Id.tabs);
 			pager.Adapter = adapter;
@@ -274,14 +292,16 @@ namespace Trakker
 
 	public class MyPagerAdapter : FragmentPagerAdapter
 	{
-		private readonly string[] Titles = {
+		private string[] Titles = {
 			"Popular", "Comedy", "Action", "Drama", "Animation", "Mystery", "SciFi"
 		};
 
 		public List<Fragment> fragList;
 
-		public MyPagerAdapter (FragmentManager fm) : base (fm)
+		public MyPagerAdapter (FragmentManager fm, string[] myTitles) : base (fm)
 		{
+
+			Titles = myTitles;
 //			fragList = new List<Fragment> ();
 //			foreach (Fragment frag in myList) {
 //				fragList.Add (frag);
@@ -311,6 +331,18 @@ namespace Trakker
 			return AddShowsFragment.NewInstance (position, Titles [position]);	
 
 		}
+
+		public override int GetItemPosition(Java.Lang.Object myObject)
+		{
+			if (myObject is AddShowsFragment) 
+			{
+			}
+
+			return base.GetItemPosition (myObject);
+
+		}
+
+
 
 		#endregion
 		

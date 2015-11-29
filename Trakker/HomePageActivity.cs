@@ -10,6 +10,7 @@ using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using com.robobat.TheMovieDB;
+using Parse;
 
 namespace Trakker
 {
@@ -31,7 +32,7 @@ namespace Trakker
 			SupportActionBar.SetDisplayHomeAsUpEnabled (true);
 			SupportActionBar.Title = "Trakker";
 
-			Console.WriteLine ("My enum for AirDateGTE is " + TVConstants.GetEnumDescription (com.robobat.TheMovieDB.TVConstants.DiscoverTV.AirDateGTE));
+			Console.WriteLine ("My enum for AirDateGTE is " + TMDBConstants.GetEnumDescription (com.robobat.TheMovieDB.TMDBConstants.DiscoverTV.AirDateGTE));
 
 			// Get our button from the layout resource,
 			// and attach an event to it
@@ -54,7 +55,31 @@ namespace Trakker
 //				var intent = new Intent (this, typeof(ShowDetailsActivity));
 //				StartActivity (intent);
 //			};
+
+
+			Button bCreateUser = FindViewById<Button> (Resource.Id.bCreateParseUser);
+
+			bCreateUser.Click += delegate {
+				var myUser = SignUpUserAsync ();
+			};
+	}
+
+		public async System.Threading.Tasks.Task SignUpUserAsync ()
+		{
+				
+			var parseUser = new ParseUser () {
+				Username = "robobat91",
+				Password = "myOtherPassword",
+				Email = "robobat@91.com"
+			};
+			await parseUser.SignUpAsync ();
+				
+
+			await ParseUser.LogInAsync ("robobat91", "myOtherPassword");
+
+
 		}
+	
 	}
 }
 

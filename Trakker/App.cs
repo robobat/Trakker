@@ -7,9 +7,9 @@ using com.robobat.ParseObjectsTrakker;
 namespace Trakker
 {
 	[Application]
-	public class App : Application
+	public class ParseApplication : Application
 	{
-		public App (IntPtr javaReference, JniHandleOwnership transfer) : base (javaReference, transfer)
+		public ParseApplication (IntPtr javaReference, JniHandleOwnership transfer) : base (javaReference, transfer)
 		{
 		}
 
@@ -20,8 +20,9 @@ namespace Trakker
 			// Initialize the parse client with your Application ID and .NET Key found on
 			// your Parse dashboard
 			ParseObject.RegisterSubclass<TVShowForParse> ();
-			ParseClient.Initialize ("HiUplm2D7dOr9FC0pAmbZBLKasF2PVPf0mpeKhje",
+			ParseClient.Initialize("HiUplm2D7dOr9FC0pAmbZBLKasF2PVPf0mpeKhje",
 				"efWpCUqTT1av8SmZkrBlU2FcUZe2az0SL6LYGNJG");
+
 		}
 	}
 }

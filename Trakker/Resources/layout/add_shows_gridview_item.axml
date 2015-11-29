@@ -8,6 +8,7 @@
         android:layout_height="100dp"
         android:id="@+id/showThumbNail" />
     <TextView
+        android:textSize="10sp"
         android:text="This is a test"
         android:id="@+id/myTitleName"
         android:layout_width="wrap_content"
@@ -19,5 +20,7 @@
         android:layout_width="wrap_content"
         android:id="@+id/trakkedButton"
         android:src="@android:drawable/btn_star_big_off"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_vertical" />
 </RelativeLayout>
